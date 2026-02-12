@@ -12,9 +12,10 @@
 
 namespace EnfantTerrible\Models\Definitions\Fotoperiodismo;
 
-use EnfantTerrible\Models\Interfaces\Registerable;
 use EnfantTerrible\Models\Definitions\Fotoperiodismo\PostType;
 use EnfantTerrible\Models\Definitions\Fotoperiodismo\Meta;
+use EnfantTerrible\Models\Definitions\Fotoperiodismo\Blocks;
+use EnfantTerrible\Models\Definitions\AbstractBootstrap;
 
 /**
  * The admin-specific functionality of the plugin.
@@ -26,59 +27,28 @@ use EnfantTerrible\Models\Definitions\Fotoperiodismo\Meta;
  * @subpackage Et_Models/admin
  * @author     Martín García <tin.geka@gmail.com>
  */
-class Bootstrap implements Registerable {
-
-	/**
-	 * The ID of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $plugin_name    The ID of this plugin.
-	 */
-	private $plugin_name;
-
-	/**
-	 * The version of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $version    The current version of this plugin.
-	 */
-	private $version;
+class Bootstrap extends AbstractBootstrap {
 
 	/**
 	 * The model name.
 	 * 
 	 * @since    1.0.0
-	 * @access   private
+	 * @access   protected
 	 * @var      string    $model_name    The name of the model.
 	 */
-	private $model_name = 'fotoperiodismo';
+	protected string $model_name = 'fotoperiodismo';
 
 	/**
-	 * Initialize the class and set its properties.
+	 * Retrieves the components to be registered for the model.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @return    array   An array of class names of the components to be registered for the model.
 	 */
-	public function __construct( $plugin_name, $version ) {
-
-		$this->plugin_name = $plugin_name;
-		$this->version = $version;
-
+	public function get_components(): array {
+		return [
+			PostType::class,
+			Meta::class,
+			Blocks::class,
+		];
 	}
-
-	/**
-	 * Register the model.
-	 *
-	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
-	 */
-	public function register() {
-		PostType::register( $this->model_name );
-		Meta::register( $this->model_name );
-	}
-
 }

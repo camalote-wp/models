@@ -1,0 +1,25 @@
+{
+  "name": "et-models",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run build:fotoperiodismo",
+    "build:fotoperiodismo": "wp-scripts build --source-path=./app/Definitions/Fotoperiodismo/blocks/src --output-path=./app/Definitions/Fotoperiodismo/blocks/build",
+    "start": "npm run start:fotoperiodismo",
+    "start:fotoperiodismo": "wp-scripts start --source-path=./app/Definitions/Fotoperiodismo/blocks/src --output-path=./app/Definitions/Fotoperiodismo/blocks/build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enfantterrible-ar/et-models.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/enfantterrible-ar/et-models/issues"
+  },
+  "homepage": "https://github.com/enfantterrible-ar/et-models#readme",
+  "devDependencies": {
+    "@wordpress/scripts": "^31.4.0"
+  }
+}

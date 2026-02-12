@@ -1,2 +1,5 @@
 /vendor/
 *repomix*
+node_modules
+build
+git.log

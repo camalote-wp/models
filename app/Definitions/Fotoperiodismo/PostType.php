@@ -2,13 +2,21 @@
 
 namespace EnfantTerrible\Models\Definitions\Fotoperiodismo;
 
-final class PostType {
-	
-    public static function register( string $model_name ): void {
-        register_post_type( $model_name, self::args() );
-    }
+use EnfantTerrible\Models\Interfaces\Registerable;
+use EnfantTerrible\Models\Definitions\AbstractPostType;
 
-    private static function args(): array {
+final class PostType extends AbstractPostType {
+	/**
+	 * Returns an array of arguments to register a post type.
+	 *
+	 * @return array {
+	 *     @type string $key The key of the argument.
+	 *     @type mixed $value The value of the argument.
+	 * }
+	 *
+	 * @see https://developer.wordpress.org/reference/functions/register_post_type/
+	 */
+    protected function args(): array {
         $labels = array(
 			'name'                     => __( 'Fotogalerías', 'et-models' ),
 			'singular_name'            => __( 'Fotogalería', 'et-models' ),
@@ -66,9 +74,7 @@ final class PostType {
 			'supports'              => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
 			'taxonomies'            => array(),
 			'has_archive'           => false,
-			'rewrite'               => array(
-				'slug'       => 'example-models',
-			),
+			'rewrite'               => array(),
 			'query_var'             => true,
 			'can_export'            => true,
 			'delete_with_user'      => false,

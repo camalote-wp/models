@@ -17,6 +17,7 @@ namespace EnfantTerrible\Models\Core;
 use EnfantTerrible\Models\Core\Loader;
 use EnfantTerrible\Models\Core\I18n;
 use EnfantTerrible\Models\Interfaces\Registerable;
+use EnfantTerrible\Models\Interfaces\Hookable;
 
 /**
  * The core plugin class.
@@ -121,34 +122,56 @@ class Plugin {
 
 	}
 
-	private function load_definitions() {
-		$definitions_path = dirname( __DIR__ ) . '/Definitions';
-		
-		if ( ! is_dir( $definitions_path ) ) {
-			return;
-		}
-		
-		foreach ( new \DirectoryIterator( $definitions_path ) as $dir ) {
-			if ( $dir->isDot() || ! $dir->isDir() ) {
-				continue;
-			}
-			
-			$model_name = $dir->getFilename();
-			$class_name = "EnfantTerrible\\Models\\Definitions\\{$model_name}\\Bootstrap";
-			
-			if ( ! class_exists( $class_name ) ) {
-				continue;
-			}
-			
-			$reflection = new \ReflectionClass( $class_name );
-			if ( ! $reflection->implementsInterface( 'EnfantTerrible\Models\Interfaces\Registerable' ) ) {
-				continue;
-			}
-			
+	/**
+	 * Load all definitions for the plugin.
+	 *
+	 * This function is responsible for loading all of the definitions for the plugin.
+	 * It takes an array of class names, instantiates them, and then registers them with
+	 * WordPress using the loader class.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 */
+	private function load_definitions(): void {
+		$models = [
+			\EnfantTerrible\Models\Definitions\Fotoperiodismo\Bootstrap::class,
+		];
+
+		foreach ( $models as $class_name ) {
 			$bootstrap = new $class_name( $this->plugin_name, $this->version );
-			$this->loader->add_action( 'init', $bootstrap, 'register' );
+
+			// Auto-instantiate Components
+			if ( method_exists( $bootstrap, 'get_components' ) ) {
+				foreach ( $bootstrap->get_components() as $component_class ) {
+					
+					// INSTANTIATE
+					$instance = new $component_class( $bootstrap->get_model_name() );
+					
+					
+					// REGISTER (Defer to init to fix Fatal Error)
+					if ( $instance instanceof Registerable ) {
+						$this->loader->add_action( 'init', $instance, 'register' );
+					}
+					
+					
+					// HOOKS
+					if ( $instance instanceof Hookable ) {
+						foreach ( $instance->get_hooks() as $hook ) {
+							$method = ( $hook['type'] === 'filter' ) ? 'add_filter' : 'add_action';
+							$this->loader->$method(
+								$hook['hook'],
+								$instance,
+								$hook['callback'],
+								$hook['priority'],
+								$hook['accepted_args']
+							);
+						}
+					}
+				}
+			}
 		}
 	}
+
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 *
