@@ -9,9 +9,14 @@
  * @link       https://github.com/tingeka
  * @since      1.0.0
  *
- * @package    Et_Models
- * @subpackage Et_Models/includes
+ * @package    EnfantTerrible/Models
+ * @subpackage EnfantTerrible/Models/includes
  */
+
+namespace EnfantTerrible\Models\Core;
+use EnfantTerrible\Models\Core\Loader;
+use EnfantTerrible\Models\Core\I18n;
+use EnfantTerrible\Models\Interfaces\Registerable;
 
 /**
  * The core plugin class.
@@ -23,11 +28,11 @@
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    Et_Models
- * @subpackage Et_Models/includes
+ * @package    EnfantTerrible/Models
+ * @subpackage EnfantTerrible/Models/includes
  * @author     Martín García <tin.geka@gmail.com>
  */
-class Et_Models {
+class Plugin {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -35,7 +40,7 @@ class Et_Models {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Et_Models_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -76,9 +81,7 @@ class Et_Models {
 
 		$this->load_dependencies();
 		$this->set_locale();
-		$this->define_admin_hooks();
-		$this->define_public_hooks();
-
+		$this->load_definitions();
 	}
 
 	/**
@@ -98,32 +101,7 @@ class Et_Models {
 	 * @access   private
 	 */
 	private function load_dependencies() {
-
-		/**
-		 * The class responsible for orchestrating the actions and filters of the
-		 * core plugin.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-et-models-loader.php';
-
-		/**
-		 * The class responsible for defining internationalization functionality
-		 * of the plugin.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-et-models-i18n.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the admin area.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-et-models-admin.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the public-facing
-		 * side of the site.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-et-models-public.php';
-
-		$this->loader = new Et_Models_Loader();
-
+		$this->loader = new Loader();
 	}
 
 	/**
@@ -137,44 +115,40 @@ class Et_Models {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Et_Models_i18n();
+		$plugin_i18n = new I18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
 	}
 
-	/**
-	 * Register all of the hooks related to the admin area functionality
-	 * of the plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
-	private function define_admin_hooks() {
-
-		$plugin_admin = new Et_Models_Admin( $this->get_plugin_name(), $this->get_version() );
-
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-
+	private function load_definitions() {
+		$definitions_path = dirname( __DIR__ ) . '/Definitions';
+		
+		if ( ! is_dir( $definitions_path ) ) {
+			return;
+		}
+		
+		foreach ( new \DirectoryIterator( $definitions_path ) as $dir ) {
+			if ( $dir->isDot() || ! $dir->isDir() ) {
+				continue;
+			}
+			
+			$model_name = $dir->getFilename();
+			$class_name = "EnfantTerrible\\Models\\Definitions\\{$model_name}\\Bootstrap";
+			
+			if ( ! class_exists( $class_name ) ) {
+				continue;
+			}
+			
+			$reflection = new \ReflectionClass( $class_name );
+			if ( ! $reflection->implementsInterface( 'EnfantTerrible\Models\Interfaces\Registerable' ) ) {
+				continue;
+			}
+			
+			$bootstrap = new $class_name( $this->plugin_name, $this->version );
+			$this->loader->add_action( 'init', $bootstrap, 'register' );
+		}
 	}
-
-	/**
-	 * Register all of the hooks related to the public-facing functionality
-	 * of the plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
-	private function define_public_hooks() {
-
-		$plugin_public = new Et_Models_Public( $this->get_plugin_name(), $this->get_version() );
-
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-
-	}
-
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 *
@@ -199,7 +173,7 @@ class Et_Models {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    Et_Models_Loader    Orchestrates the hooks of the plugin.
+	 * @return    Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;

@@ -1,0 +1,16 @@
+{
+    "name": "enfantterrible-ar/et-models",
+    "description": "Defines Enfant Terrible content models, including post types, taxonomies, metadata, templates, and blocks.",
+    "authors": [
+        {
+            "name": "Martín García",
+            "email": "tin.geka@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "EnfantTerrible\\Models\\": "app/"
+        }
+    }
+}

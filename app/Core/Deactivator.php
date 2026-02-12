@@ -6,9 +6,11 @@
  * @link       https://github.com/tingeka
  * @since      1.0.0
  *
- * @package    Et_Models
- * @subpackage Et_Models/includes
+ * @package    EnfantTerrible/Models
+ * @subpackage EnfantTerrible/Models/includes
  */
+
+namespace EnfantTerrible\Models\Core;
 
 /**
  * Fired during plugin deactivation.
@@ -16,11 +18,11 @@
  * This class defines all code necessary to run during the plugin's deactivation.
  *
  * @since      1.0.0
- * @package    Et_Models
- * @subpackage Et_Models/includes
+ * @package    EnfantTerrible/Models
+ * @subpackage EnfantTerrible/Models/includes
  * @author     Martín García <tin.geka@gmail.com>
  */
-class Et_Models_Deactivator {
+class Deactivator {
 
 	/**
 	 * Short Description. (use period)

@@ -25,6 +25,10 @@
  * Domain Path:       /languages
  */
 
+use EnfantTerrible\Models\Core\Activator;
+use EnfantTerrible\Models\Core\Deactivator;
+use EnfantTerrible\Models\Core\Plugin;
+
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
@@ -38,12 +42,19 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'ET_MODELS_VERSION', '1.0.0' );
 
 /**
+ * Imports the Composer autoloader if it exists.
+ */
+if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
+	require_once __DIR__ . '/vendor/autoload.php';
+}
+
+/**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-et-models-activator.php
  */
 function activate_et_models() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-et-models-activator.php';
-	Et_Models_Activator::activate();
+	// require_once plugin_dir_path( __FILE__ ) . 'includes/class-et-models-activator.php';
+	Activator::activate();
 }
 
 /**
@@ -51,8 +62,8 @@ function activate_et_models() {
  * This action is documented in includes/class-et-models-deactivator.php
  */
 function deactivate_et_models() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-et-models-deactivator.php';
-	Et_Models_Deactivator::deactivate();
+	// require_once plugin_dir_path( __FILE__ ) . 'includes/class-et-models-deactivator.php';
+	Deactivator::deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_et_models' );
@@ -62,7 +73,7 @@ register_deactivation_hook( __FILE__, 'deactivate_et_models' );
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-et-models.php';
+// require plugin_dir_path( __FILE__ ) . 'includes/class-et-models.php';
 
 /**
  * Begins execution of the plugin.
@@ -75,7 +86,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-et-models.php';
  */
 function run_et_models() {
 
-	$plugin = new Et_Models();
+	$plugin = new Plugin();
 	$plugin->run();
 
 }

@@ -6,9 +6,11 @@
  * @link       https://github.com/tingeka
  * @since      1.0.0
  *
- * @package    Et_Models
- * @subpackage Et_Models/includes
+ * @package    EnfantTerrible/Models
+ * @subpackage EnfantTerrible/Models/includes
  */
+
+namespace EnfantTerrible\Models\Core;
 
 /**
  * Register all actions and filters for the plugin.
@@ -17,11 +19,11 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    Et_Models
- * @subpackage Et_Models/includes
+ * @package    EnfantTerrible/Models
+ * @subpackage EnfantTerrible/Models/includes
  * @author     Martín García <tin.geka@gmail.com>
  */
-class Et_Models_Loader {
+class Loader {
 
 	/**
 	 * The array of actions registered with WordPress.
