@@ -39,6 +39,13 @@ final class Blocks extends AbstractBlocks {
                 'callback' => 'set_template',
                 'priority' => 20, // after PostType registers at 10
                 'accepted_args' => 1
+            ],
+            [
+                'type' => 'filter',
+                'hook' => 'block_editor_settings_all',
+                'callback' => 'lock_blocks',
+                'priority' => 10,
+                'accepted_args' => 2
             ]
         ];
     }
@@ -86,6 +93,12 @@ final class Blocks extends AbstractBlocks {
     }
 
 
+    /**
+     * Sets the template for the Fotoperiodismo post type.
+     *
+     * This function sets the default blocks for the Fotoperiodismo post type.
+     * It also locks the template so that users can't change the block order.
+     */
     public function set_template(): void {
         $post_type_object = get_post_type_object( $this->model_name );
 
@@ -97,5 +110,22 @@ final class Blocks extends AbstractBlocks {
             [ 'enfantterrible/fotoperiodismo-images' ],
         ];
         $post_type_object->template_lock = 'all';
+    }
+
+    /**
+     * Disables the block locking feature and code editing feature for the 
+     * Fotoperiodismo post type.
+     *
+     * @param array $settings The block editor settings.
+     * @param object $context The current context.
+     *
+     * @return array The modified block editor settings.
+     */
+    public function lock_blocks( $settings, $context ): array {
+        if ( $context->post?->post_type === $this->model_name ) {
+            $settings['canLockBlocks'] = false;
+            $settings['codeEditingEnabled'] = false;
+        }
+        return $settings;
     }
 }
