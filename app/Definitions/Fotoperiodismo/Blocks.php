@@ -32,6 +32,13 @@ final class Blocks extends AbstractBlocks {
                 'callback' => 'restrict',
                 'priority' => 10,
                 'accepted_args' => 2
+            ],
+            [
+                'type' => 'action',
+                'hook' => 'init',
+                'callback' => 'set_template',
+                'priority' => 20, // after PostType registers at 10
+                'accepted_args' => 1
             ]
         ];
     }
@@ -76,5 +83,19 @@ final class Blocks extends AbstractBlocks {
         }
         
         return $allowed;
+    }
+
+
+    public function set_template(): void {
+        $post_type_object = get_post_type_object( $this->model_name );
+
+        if ( ! $post_type_object ) return;
+
+        $post_type_object->template = [
+            [ 'enfantterrible/fotoperiodismo-bajada' ],
+            [ 'enfantterrible/fotoperiodismo-authors' ],
+            [ 'enfantterrible/fotoperiodismo-images' ],
+        ];
+        $post_type_object->template_lock = 'all';
     }
 }
