@@ -21,5 +21,8 @@
   "homepage": "https://github.com/enfantterrible-ar/et-models#readme",
   "devDependencies": {
     "@wordpress/scripts": "^31.4.0"
+  },
+  "dependencies": {
+    "@10up/block-components": "^1.22.1"
   }
 }

@@ -21,8 +21,9 @@ final class Meta extends AbstractMeta {
      * @return array
      */
     protected function schema(): array {
+        $prefix = 'et-models_' . $this->model_name . '_';
 		return [
-            'example_meta_key' => [
+            $prefix . 'bajada' => [
                 'type' => 'string',
                 'single' => true,
                 'show_in_rest' => true,

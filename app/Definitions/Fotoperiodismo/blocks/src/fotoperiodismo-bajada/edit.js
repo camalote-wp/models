@@ -21,18 +21,32 @@ import { useBlockProps } from '@wordpress/block-editor';
  */
 import './editor.scss';
 
+import { PostMeta } from '@10up/block-components';
+import { TextareaControl } from '@wordpress/components';
+
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
  *
- * @return {Element} Element to render.
+ * @returns {Element} Element to render.
  */
-export default function Edit() {
+const Edit = () => {
 	return (
-		<p { ...useBlockProps() }>
-			{ __( 'Fotoperiodismobajada – hello from the editor!', 'fotoperiodismobajada' ) }
-		</p>
+		<PostMeta metaKey="et-models_fotoperiodismo_bajada">
+			{(bajada, setBajada) => (
+				<div {...useBlockProps()} className="wp-block-fotoperiodismo-bajada">
+					<TextareaControl
+						__next40pxDefaultSize
+						label="Bajada"
+						value={bajada}
+						onChange={ ( value ) => setBajada( value ) }
+					/>
+				</div>
+			)}
+		</PostMeta>
 	);
-}
+};
+
+export default Edit;
