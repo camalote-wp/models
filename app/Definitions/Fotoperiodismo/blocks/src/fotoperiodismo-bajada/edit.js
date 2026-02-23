@@ -34,18 +34,20 @@ import { TextareaControl } from '@wordpress/components';
  */
 const Edit = () => {
 	return (
-		<PostMeta metaKey="et-models_fotoperiodismo_bajada">
-			{(bajada, setBajada) => (
-				<div {...useBlockProps()} className="wp-block-fotoperiodismo-bajada">
+		<div {...useBlockProps()}>
+			<div className="wp-block-enfantterrible-fotoperiodismo-bajada-header">
+				<p>Bajada</p>
+			</div>
+			<PostMeta metaKey="et-models_fotoperiodismo_bajada">
+				{(bajada, setBajada) => (
 					<TextareaControl
 						__next40pxDefaultSize
-						label="Bajada"
 						value={bajada}
 						onChange={ ( value ) => setBajada( value ) }
 					/>
-				</div>
-			)}
-		</PostMeta>
+				)}
+			</PostMeta>
+		</div>
 	);
 };
 
