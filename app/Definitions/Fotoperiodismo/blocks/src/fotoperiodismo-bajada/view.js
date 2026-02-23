@@ -21,5 +21,5 @@
  */
  
 /* eslint-disable no-console */
-console.log("Hello World! (from enfantterrible-fotoperiodismobajada block)");
+// console.log("Hello World! (from enfantterrible-fotoperiodismobajada block)");
 /* eslint-enable no-console */
