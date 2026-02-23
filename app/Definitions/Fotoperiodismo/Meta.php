@@ -45,6 +45,23 @@ final class Meta extends AbstractMeta {
                     ],
                 ],
             ],
+            $prefix . 'images' => [
+                'type' => 'array',
+                'single' => true,
+                'show_in_rest' => [
+                    'schema' => [
+                        'type'  => 'array',
+                        'items' => [
+                            'type'       => 'object',
+                            'properties' => [
+                                'id'   => [ 'type' => 'string' ],
+                                'url' => [ 'type' => 'string' ],
+                                'alt'  => [ 'type' => 'string' ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 }

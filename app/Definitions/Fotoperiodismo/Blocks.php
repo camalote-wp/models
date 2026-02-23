@@ -52,7 +52,9 @@ final class Blocks extends AbstractBlocks {
             return [
                 'enfantterrible/fotoperiodismo-bajada',
                 'enfantterrible/fotoperiodismo-authors',
-                'enfantterrible/fotoperiodismo-authors-item'
+                'enfantterrible/fotoperiodismo-authors-item',
+                'enfantterrible/fotoperiodismo-images',
+                'enfantterrible/fotoperiodismo-images-item',
             ];
         }
         
