@@ -8,7 +8,7 @@ import { createBlock } from '@wordpress/blocks';
 import { Button } from '@wordpress/components';
 import { usePostMetaValue } from '@10up/block-components';
 import { useDispatch, useSelect } from '@wordpress/data';
-import { useEffect } from '@wordpress/element';
+import { useEffect, useRef } from '@wordpress/element';
 import { nanoid } from 'nanoid';
 import './editor.scss';
 
@@ -27,11 +27,10 @@ import './editor.scss';
  * @returns {WPElement} Rendered block edit interface.
  */
 export const BlockEdit = ({ clientId }) => {
-	const blockProps = useBlockProps();
-
+	const blockProps = useBlockProps();0
 	const [authors, setAuthors] = usePostMetaValue('et-models_fotoperiodismo_authors');
-
 	const { replaceInnerBlocks } = useDispatch(blockEditorStore);
+	const hasHydrated = useRef(false);
 
 	const innerBlocks = useSelect(
 		(select) => select('core/block-editor').getBlocks(clientId),
@@ -53,9 +52,27 @@ export const BlockEdit = ({ clientId }) => {
 			}),
 		);
 		replaceInnerBlocks(clientId, blocks, false);
+		hasHydrated.current = true;
 		// Intentionally run once on mount.
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [authors]);
+
+	/**
+	 * After every inner blocks change (including BlockMover reorder), sync meta order.
+	 */
+	useEffect(() => {
+		if (!hasHydrated.current) return;
+		if (!authors?.length || !innerBlocks.length) return;
+		if (innerBlocks.length !== authors.length) return;
+
+		const reordered = innerBlocks
+			.map((block) => authors.find((a) => a.id === block.attributes.id))
+			.filter(Boolean);
+
+		if (reordered.length === authors.length) {
+			setAuthors(reordered);
+		}
+	}, [innerBlocks]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	/**
 	 * Add a new author to meta and create a corresponding InnerBlock.
