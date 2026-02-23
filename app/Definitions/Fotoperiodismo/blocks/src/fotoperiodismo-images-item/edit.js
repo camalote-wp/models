@@ -66,7 +66,7 @@ export const BlockEdit = ({ clientId, attributes }) => {
 							)}
 							<div className="image-item__data">
 								<p>ID: {image.id}</p>
-								<p>URL: {image.url}</p>
+								<p>Nombre: {image.url.split('/').pop()}</p>
 								<div className="image-item__actions">
 									<Button variant="primary" icon={replaceIcon} onClick={open}>
 										Reemplazar
