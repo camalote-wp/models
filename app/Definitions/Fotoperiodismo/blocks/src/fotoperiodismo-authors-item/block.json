@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "enfantterrible/fotoperiodismo-authors-item",
+	"title": "Fotogalería - Autorx",
+	"category": "text",
+	"description": "Autorx de la fotogalería",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"id": { "type": "string" },
+		"name": { "type": "string", "default": "" },
+		"url": { "type": "string", "default": "" }
+	},
+	"parent": ["enfantterrible/fotoperiodismo-authors"],
+	"textdomain": "et-models",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js"
+}

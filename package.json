@@ -23,6 +23,7 @@
     "@wordpress/scripts": "^31.4.0"
   },
   "dependencies": {
-    "@10up/block-components": "^1.22.1"
+    "@10up/block-components": "^1.22.1",
+    "nanoid": "^5.1.6"
   }
 }

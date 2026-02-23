@@ -28,6 +28,23 @@ final class Meta extends AbstractMeta {
                 'single' => true,
                 'show_in_rest' => true,
             ],
+            $prefix . 'authors' => [
+                'type' => 'array',
+                'single' => true,
+                'show_in_rest' => [
+                    'schema' => [
+                        'type'  => 'array',
+                        'items' => [
+                            'type'       => 'object',
+                            'properties' => [
+                                'id'   => [ 'type' => 'string' ],
+                                'name' => [ 'type' => 'string' ],
+                                'url'  => [ 'type' => 'string' ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 }

@@ -50,7 +50,9 @@ final class Blocks extends AbstractBlocks {
     public function restrict( $allowed, $context ): array|bool {
 		if ( $context->post?->post_type === $this->model_name ) {
             return [
-                'enfantterrible/fotoperiodismo-bajada'
+                'enfantterrible/fotoperiodismo-bajada',
+                'enfantterrible/fotoperiodismo-authors',
+                'enfantterrible/fotoperiodismo-authors-item'
             ];
         }
         
