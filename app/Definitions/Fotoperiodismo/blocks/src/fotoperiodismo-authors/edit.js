@@ -27,7 +27,7 @@ import './editor.scss';
  * @returns {WPElement} Rendered block edit interface.
  */
 export const BlockEdit = ({ clientId }) => {
-	const blockProps = useBlockProps();0
+	const blockProps = useBlockProps();
 	const [authors, setAuthors] = usePostMetaValue('et-models_fotoperiodismo_authors');
 	const { replaceInnerBlocks } = useDispatch(blockEditorStore);
 	const hasHydrated = useRef(false);
