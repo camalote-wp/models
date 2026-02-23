@@ -4,6 +4,22 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-enfantterrible-fotoperiodismobajada {
-	border: 1px dotted #f00;
+.wp-block-enfantterrible-fotoperiodismo-bajada {
+  padding: var(--wp--preset--spacing--20);
+  border: 1px solid var(--wp--preset--color--neutral-light);
+  display: flex;
+  flex-direction: column;
+  gap: var(--wp--preset--spacing--20);
+}
+
+.wp-block-enfantterrible-fotoperiodismo-bajada
+.wp-block-enfantterrible-fotoperiodismo-bajada-header {
+  border-bottom: 1px solid var(--wp--preset--color--neutral-light);
+}
+
+.wp-block-enfantterrible-fotoperiodismo-bajada
+.wp-block-enfantterrible-fotoperiodismo-bajada-header p {
+  font-weight: bold;
+  margin: 0;
+  padding-bottom: var(--wp--preset--spacing--20);
 }
