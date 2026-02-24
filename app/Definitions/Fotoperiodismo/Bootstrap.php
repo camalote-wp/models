@@ -12,12 +12,14 @@
 
 namespace EnfantTerrible\Models\Definitions\Fotoperiodismo;
 
+use EnfantTerrible\Models\Definitions\AbstractBootstrap;
+
 use EnfantTerrible\Models\Definitions\Fotoperiodismo\PostType;
 use EnfantTerrible\Models\Definitions\Fotoperiodismo\Meta;
 use EnfantTerrible\Models\Definitions\Fotoperiodismo\Blocks;
 use EnfantTerrible\Models\Definitions\Fotoperiodismo\View;
 use EnfantTerrible\Models\Definitions\Fotoperiodismo\Rest;
-use EnfantTerrible\Models\Definitions\AbstractBootstrap;
+use EnfantTerrible\Models\Definitions\Fotoperiodismo\AdminPage;
 
 /**
  * The admin-specific functionality of the plugin.
@@ -52,7 +54,8 @@ class Bootstrap extends AbstractBootstrap {
 			Meta::class,
 			Blocks::class,
 			View::class,
-			Rest::class
+			Rest::class,
+			AdminPage::class
 		];
 	}
 }

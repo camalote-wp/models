@@ -5,9 +5,13 @@
   "main": "index.js",
   "scripts": {
     "build": "npm run build:fotoperiodismo",
-    "build:fotoperiodismo": "wp-scripts build --source-path=./app/Definitions/Fotoperiodismo/blocks/src --output-path=./app/Definitions/Fotoperiodismo/blocks/build",
+    "build:fotoperiodismo": "npm run build:fotoperiodismo:blocks && npm run build:fotoperiodismo:admin",
+    "build:fotoperiodismo:blocks": "wp-scripts build --source-path=./app/Definitions/Fotoperiodismo/blocks/src --output-path=./app/Definitions/Fotoperiodismo/blocks/build",
+    "build:fotoperiodismo:admin": "wp-scripts build --source-path=./app/Definitions/Fotoperiodismo/assets/src/js/admin-page --output-path=./app/Definitions/Fotoperiodismo/assets/build/admin-page",
     "start": "npm run start:fotoperiodismo",
-    "start:fotoperiodismo": "wp-scripts start --source-path=./app/Definitions/Fotoperiodismo/blocks/src --output-path=./app/Definitions/Fotoperiodismo/blocks/build"
+    "start:fotoperiodismo": "npm run start:fotoperiodismo:blocks && npm run start:fotoperiodismo:admin",
+    "start:fotoperiodismo:blocks": "wp-scripts start --source-path=./app/Definitions/Fotoperiodismo/blocks/src --output-path=./app/Definitions/Fotoperiodismo/blocks/build",
+    "start:fotoperiodismo:admin": "wp-scripts start --source-path=./app/Definitions/Fotoperiodismo/assets/src/js/admin-page --output-path=./app/Definitions/Fotoperiodismo/assets/build/admin-page"
   },
   "repository": {
     "type": "git",
@@ -24,6 +28,7 @@
   },
   "dependencies": {
     "@10up/block-components": "^1.22.1",
+    "@wordpress/dataviews": "^12.0.0",
     "nanoid": "^5.1.6"
   }
 }
