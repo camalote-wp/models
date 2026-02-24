@@ -16,6 +16,7 @@ use EnfantTerrible\Models\Definitions\Fotoperiodismo\PostType;
 use EnfantTerrible\Models\Definitions\Fotoperiodismo\Meta;
 use EnfantTerrible\Models\Definitions\Fotoperiodismo\Blocks;
 use EnfantTerrible\Models\Definitions\Fotoperiodismo\View;
+use EnfantTerrible\Models\Definitions\Fotoperiodismo\Rest;
 use EnfantTerrible\Models\Definitions\AbstractBootstrap;
 
 /**
@@ -50,7 +51,8 @@ class Bootstrap extends AbstractBootstrap {
 			PostType::class,
 			Meta::class,
 			Blocks::class,
-			View::class
+			View::class,
+			Rest::class
 		];
 	}
 }
