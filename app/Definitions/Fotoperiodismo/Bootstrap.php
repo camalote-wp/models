@@ -19,7 +19,7 @@ use EnfantTerrible\Models\Definitions\Fotoperiodismo\Meta;
 use EnfantTerrible\Models\Definitions\Fotoperiodismo\Blocks;
 use EnfantTerrible\Models\Definitions\Fotoperiodismo\View;
 use EnfantTerrible\Models\Definitions\Fotoperiodismo\Rest;
-use EnfantTerrible\Models\Definitions\Fotoperiodismo\AdminPage;
+use EnfantTerrible\Models\Definitions\Fotoperiodismo\MigrationPage;
 
 /**
  * The admin-specific functionality of the plugin.
@@ -55,7 +55,7 @@ class Bootstrap extends AbstractBootstrap {
 			Blocks::class,
 			View::class,
 			Rest::class,
-			AdminPage::class
+			MigrationPage::class
 		];
 	}
 }
