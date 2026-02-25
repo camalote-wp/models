@@ -38,12 +38,23 @@ const Edit = () => {
 			<div className="wp-block-enfantterrible-fotoperiodismo-bajada-header">
 				<p>Bajada</p>
 			</div>
+			<PostMeta metaKey="et-models_fotoperiodismo_excerpt">
+				{(bajada, setBajada) => (
+					<TextareaControl
+						__next40pxDefaultSize
+						value={bajada}
+						label={__('Bajada corta', 'et-theme')}
+						onChange={(value) => setBajada(value)}
+					/>
+				)}
+			</PostMeta>
 			<PostMeta metaKey="et-models_fotoperiodismo_bajada">
 				{(bajada, setBajada) => (
 					<TextareaControl
 						__next40pxDefaultSize
 						value={bajada}
-						onChange={ ( value ) => setBajada( value ) }
+						label={__('Bajada larga', 'et-theme')}
+						onChange={(value) => setBajada(value)}
 					/>
 				)}
 			</PostMeta>
