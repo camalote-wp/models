@@ -15,8 +15,8 @@ async function getTransformedMeta(meta) {
 
 	return {
 		'et-models_fotoperiodismo_authors': authors,
-		'et-models_fotoperiodismo_bajada': meta._crb_enfantterrible_fotoperiodismo_desc_long || '',
-		'et-models_fotoperiodismo_excerpt':
+		'et-models_fotoperiodismo_excerpt_long': meta._crb_enfantterrible_fotoperiodismo_desc_long || '',
+		'et-models_fotoperiodismo_excerpt_short':
 			meta._crb_enfantterrible_fotoperiodismo_desc_short || '',
 		'et-models_fotoperiodismo_images': images,
 	};

@@ -22,12 +22,12 @@ final class Meta extends AbstractMeta {
     protected function schema(): array {
         $prefix = 'et-models_' . $this->model_name . '_';
 		return [
-            $prefix . 'bajada' => [
+            $prefix . 'excerpt_short' => [
                 'type' => 'string',
                 'single' => true,
                 'show_in_rest' => true,
             ],
-            $prefix . 'excerpt' => [
+            $prefix . 'excerpt_long' => [
                 'type' => 'string',
                 'single' => true,
                 'show_in_rest' => true,
