@@ -1,6 +1,6 @@
 <?php
 
-namespace EnfantTerrible\Models\Definitions;
+namespace EnfantTerrible\Models\Abstracts;
 
 abstract class AbstractBootstrap {
 

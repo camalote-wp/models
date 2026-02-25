@@ -2,7 +2,7 @@
 
 namespace EnfantTerrible\Models\Definitions\Fotoperiodismo;
 
-use EnfantTerrible\Models\Definitions\AbstractBlocks;
+use EnfantTerrible\Models\Abstracts\AbstractBlocks;
 
 final class Blocks extends AbstractBlocks {
 

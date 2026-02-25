@@ -1,8 +1,7 @@
 <?php
 
 namespace EnfantTerrible\Models\Definitions\Fotoperiodismo;
-use EnfantTerrible\Models\Interfaces\Registerable;
-use EnfantTerrible\Models\Definitions\AbstractMeta;
+use EnfantTerrible\Models\Abstracts\AbstractMeta;
 
 final class Meta extends AbstractMeta {
 

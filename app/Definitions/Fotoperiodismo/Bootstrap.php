@@ -12,7 +12,7 @@
 
 namespace EnfantTerrible\Models\Definitions\Fotoperiodismo;
 
-use EnfantTerrible\Models\Definitions\AbstractBootstrap;
+use EnfantTerrible\Models\Abstracts\AbstractBootstrap;
 
 use EnfantTerrible\Models\Definitions\Fotoperiodismo\PostType;
 use EnfantTerrible\Models\Definitions\Fotoperiodismo\Meta;

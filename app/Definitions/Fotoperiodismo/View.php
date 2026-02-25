@@ -2,7 +2,7 @@
 
 namespace EnfantTerrible\Models\Definitions\Fotoperiodismo;
 
-use EnfantTerrible\Models\Definitions\AbstractView;
+use EnfantTerrible\Models\Abstracts\AbstractView;
 
 final class View extends AbstractView {
 

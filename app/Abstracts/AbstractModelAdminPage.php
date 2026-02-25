@@ -1,5 +1,5 @@
 <?php
-namespace EnfantTerrible\Models\Definitions;
+namespace EnfantTerrible\Models\Abstracts;
 
 use EnfantTerrible\Models\Interfaces\Hookable;
 use EnfantTerrible\Models\Interfaces\AdminPage;

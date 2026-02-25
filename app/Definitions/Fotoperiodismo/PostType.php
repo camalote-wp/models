@@ -2,8 +2,7 @@
 
 namespace EnfantTerrible\Models\Definitions\Fotoperiodismo;
 
-use EnfantTerrible\Models\Interfaces\Registerable;
-use EnfantTerrible\Models\Definitions\AbstractPostType;
+use EnfantTerrible\Models\Abstracts\AbstractPostType;
 
 final class PostType extends AbstractPostType {
 	/**

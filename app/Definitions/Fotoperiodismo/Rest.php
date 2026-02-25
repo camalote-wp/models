@@ -1,7 +1,8 @@
 <?php
 
 namespace EnfantTerrible\Models\Definitions\Fotoperiodismo;
-use EnfantTerrible\Models\Definitions\AbstractRest;
+
+use EnfantTerrible\Models\Abstracts\AbstractRest;
 
 final class Rest extends AbstractRest {
 

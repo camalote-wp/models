@@ -1,7 +1,7 @@
 <?php
 namespace EnfantTerrible\Models\Definitions\Fotoperiodismo;
 
-use EnfantTerrible\Models\Definitions\AbstractModelAdminPage;
+use EnfantTerrible\Models\Abstracts\AbstractModelAdminPage;
 
 final class MigrationPage extends AbstractModelAdminPage {
     public function get_hooks(): array {

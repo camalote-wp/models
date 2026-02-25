@@ -1,6 +1,6 @@
 <?php
 
-namespace EnfantTerrible\Models\Definitions;
+namespace EnfantTerrible\Models\Abstracts;
 
 use EnfantTerrible\Models\Interfaces\Registerable;
 

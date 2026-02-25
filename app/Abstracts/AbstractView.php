@@ -1,6 +1,6 @@
 <?php
 
-namespace EnfantTerrible\Models\Definitions;
+namespace EnfantTerrible\Models\Abstracts;
 
 use EnfantTerrible\Models\Interfaces\Registerable;
 use EnfantTerrible\Models\Interfaces\Hookable;
@@ -48,7 +48,7 @@ abstract class AbstractView implements Registerable, Hookable {
         $class       = static::class;
         $parts       = explode( '\\', $class );
         $folder_name = $parts[ count( $parts ) - 2 ]; // e.g. 'Fotoperiodismo'
-        return __DIR__ . '/' . $folder_name . '/templates';
+        return ET_MODELS_DIR . 'app/Definitions/' . $folder_name . '/templates';
     }
 
     /**
