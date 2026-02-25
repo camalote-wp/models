@@ -3,7 +3,7 @@ import { DataViews } from '@wordpress/dataviews/wp';
 import { useSelect } from '@wordpress/data';
 // import '@wordpress/dataviews/build-style/style.css';
 // import '@wordpress/theme/design-tokens.css';
-import '../../../css/admin-page.css';
+import '../../../css/admin-page/index.css';
 
 import { actions as dataviewsActions } from '../actions';
 

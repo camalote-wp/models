@@ -11,12 +11,14 @@ final class MigrationPage extends AbstractModelAdminPage {
                 'hook'     => 'admin_menu',
                 'callback' => 'register_submenu_page',
                 'priority' => 10,
+				'accepted_args' => 1
             ],
             [
                 'type'     => 'action',
                 'hook'     => 'admin_enqueue_scripts',
                 'callback' => 'enqueue_assets',
                 'priority' => 10,
+				'accepted_args' => 1
             ]
         ];
     }
@@ -33,8 +35,8 @@ final class MigrationPage extends AbstractModelAdminPage {
     public function get_asset_config(): array {
         return [
             'handle'    => 'et-models-fotoperiodismo-admin',
-            'asset_dir' => plugin_dir_path( __FILE__ ) . 'assets/build/admin-page/',
-            'asset_url' => plugins_url( 'assets/build/admin-page/', __FILE__ ),
+            'asset_dir' => ET_MODELS_DIR . 'assets/build/fotoperiodismo/js/admin-page/',
+            'asset_url' => ET_MODELS_URL . 'assets/build/fotoperiodismo/js/admin-page/',
             'script'    => 'index.js',
             'style'     => 'index.css',
             'deps_file' => 'index.asset.php',

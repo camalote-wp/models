@@ -41,6 +41,17 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'ET_MODELS_VERSION', '1.0.0' );
 
+if ( ! defined( 'ET_MODELS_DIR' ) ) {
+	define( 'ET_MODELS_DIR', plugin_dir_path( __FILE__ ) );
+}
+
+if ( ! defined( 'ET_MODELS_URL' ) ) {
+	define( 'ET_MODELS_URL', plugin_dir_url( __FILE__ ) );
+}
+
+// var_dump(ET_MODELS_DIR);
+// var_dump(ET_MODELS_URL);
+
 /**
  * Imports the Composer autoloader if it exists.
  */

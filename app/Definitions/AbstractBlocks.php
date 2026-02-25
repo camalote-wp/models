@@ -28,17 +28,7 @@ abstract class AbstractBlocks implements Registerable, Hookable {
     }
 
     private function get_automatic_path(): string {
-        // 1. Get the full class name of the Child (e.g., ...\Fotoperiodismo\Blocks)
-        $class = static::class;
-
-        // 2. Break it into parts
-        $parts = explode( '\\', $class );
-
-        // 3. The folder name is the second to last part (Fotoperiodismo)
-        // [ ... 'Definitions', 'Fotoperiodismo', 'Blocks' ]
-        $folder_name = $parts[ count( $parts ) - 2 ];
-
-        // 4. Build path relative to THIS file (AbstractBlocks.php is in Definitions/)
-        return __DIR__ . '/' . $folder_name . '/blocks/build';
+        $dir_path = ET_MODELS_DIR . 'assets/build/' . $this->model_name . '/blocks';
+        return $dir_path;
     }
 }

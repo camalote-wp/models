@@ -51,7 +51,7 @@ final class View extends AbstractView {
         if ( is_post_type_archive( $this->model_name ) ) {
             wp_enqueue_style(
                 $handle,
-                plugins_url( 'css/archive-fotoperiodismo.css', __FILE__ ),
+                ET_MODELS_URL . 'assets/build/fotoperiodismo/css/templates/archive-fotoperiodismo.css',
                 [],
                 '1.0.0'
             );
