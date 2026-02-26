@@ -35,25 +35,14 @@ import { TextareaControl } from '@wordpress/components';
 const Edit = () => {
 	return (
 		<div {...useBlockProps()}>
-			<div className="wp-block-enfantterrible-fotoperiodismo-bajada-header">
-				<p>Bajada</p>
+			<div className="wp-block-enfantterrible-fotoperiodismo-excerpt-long-header">
+				<p>Bajada (larga)</p>
 			</div>
-			<PostMeta metaKey="et-models_fotoperiodismo_excerpt_short">
-				{(shortExcerpt, setShortExcerpt) => (
-					<TextareaControl
-						__next40pxDefaultSize
-						value={shortExcerpt}
-						label={__('Bajada corta', 'et-theme')}
-						onChange={(value) => setShortExcerpt(value)}
-					/>
-				)}
-			</PostMeta>
 			<PostMeta metaKey="et-models_fotoperiodismo_excerpt_long">
 				{(longExcerpt, setLongExcerpt) => (
 					<TextareaControl
 						__next40pxDefaultSize
 						value={longExcerpt}
-						label={__('Bajada larga', 'et-theme')}
 						onChange={(value) => setLongExcerpt(value)}
 					/>
 				)}

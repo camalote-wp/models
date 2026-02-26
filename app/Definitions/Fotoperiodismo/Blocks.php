@@ -105,7 +105,8 @@ final class Blocks extends AbstractBlocks {
         if ( ! $post_type_object ) return;
 
         $post_type_object->template = [
-            [ 'enfantterrible/fotoperiodismo-bajada' ],
+            [ 'enfantterrible/fotoperiodismo-excerpt-short' ],
+            [ 'enfantterrible/fotoperiodismo-excerpt-long' ],
             [ 'enfantterrible/fotoperiodismo-authors' ],
             [ 'enfantterrible/fotoperiodismo-images' ],
         ];
