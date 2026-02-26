@@ -83,6 +83,7 @@ class Plugin {
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->load_definitions();
+		$this->enqueue_global_assets();
 	}
 
 	/**
@@ -170,6 +171,14 @@ class Plugin {
 				}
 			}
 		}
+	}
+
+	public function enqueue_global_assets(): void {
+		$this->loader->add_action( 'wp_enqueue_scripts', $this, 'enqueue_assets' );
+	}
+
+	public function enqueue_assets(): void {
+		wp_enqueue_style( 'et-models-shared-styles', ET_MODELS_URL . 'assets/build/shared/index.css' );
 	}
 
 	/**

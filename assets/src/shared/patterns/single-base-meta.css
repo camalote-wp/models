@@ -1,0 +1,34 @@
+.wp-block-group.et-models-single-base-meta {
+	overflow: hidden;
+}
+
+.wp-block-group.et-models-single-base-meta-inner-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+
+	/* This stays -17px to match the padding-left below */
+	margin-left: -17px;
+}
+
+.wp-block-group.et-models-single-base-meta-inner-wrapper > * {
+	align-items: center;
+	display: flex;
+
+	/* This creates the total gap between items */
+	padding-left: 17px;
+	position: relative;
+}
+
+.wp-block-group.et-models-single-base-meta-inner-wrapper > *::before {
+	background-color: currentColor;
+	content: "";
+	flex-shrink: 0;
+	height: 14px;
+
+	/* Move the pipe to the middle of the 17px padding */
+
+	/* 8px space | 1px pipe | 8px space remains */
+	left: 8px;
+	position: absolute;
+	width: 1px;
+}

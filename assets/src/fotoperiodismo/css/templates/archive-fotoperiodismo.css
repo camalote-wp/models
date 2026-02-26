@@ -1,60 +1,19 @@
 body.post-type-archive-fotoperiodismo {
-	& .wp-block-query:where(.et-theme-archive-post-feed-query) .et-theme-archive-post-feed-items {
+	& .et-models-archive-header {
+		padding-left: var(--wp--preset--spacing--60);
+		padding-right: var(--wp--preset--spacing--60);
+	}
+	
+	& .wp-block-query:where(.et-models-fotoperiodismo-feed-query) .et-models-fotoperiodismo-feed-items {
 		display: grid;
 		grid-template-columns: repeat(1,1fr);
 		gap: 0;
-	}
-
-	& .wp-block-query:where(.et-theme-archive-post-feed-query) .et-theme-archive-post-feed-item {
-		position: relative;
-		
-		& figure {
-			position: relative;
-			aspect-ratio: 4/5;
-			width: 100%;
-			max-width: unset;
-
-			&::after {
-				content: "";
-				inset: 0;
-				position: absolute;
-				background: 
-					linear-gradient(
-						to bottom, 
-						transparent 60%, 
-						var(--wp--preset--color--contrast) 80%
-					),
-					var(--wp--preset--color--primary);
-				mix-blend-mode: multiply;
-				transition: background 0.3s ease;
-			}
-
-			&:hover::after {
-				background: 
-					linear-gradient(
-						to bottom, 
-						transparent 60%, 
-						var(--wp--preset--color--contrast) 80%
-					);
-			}
-		}
-		& > .wp-block-group:last-child {
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			padding: var(--wp--preset--spacing--40);
-			color: var(--wp--preset--color--base);
-		}
-
-		& * {
-			color: var(--wp--preset--color--base)
-		}
 	}
 }
 
 @media (min-width: 768px) {
 	body.post-type-archive-fotoperiodismo {
-		& .wp-block-query:where(.et-theme-archive-post-feed-query) .et-theme-archive-post-feed-items {
+		& .wp-block-query:where(.et-models-fotoperiodismo-feed-query) .et-models-fotoperiodismo-feed-items {
 			grid-template-columns: repeat(2,1fr);
 		}
 	}
@@ -62,7 +21,7 @@ body.post-type-archive-fotoperiodismo {
 
 @media (min-width: 1536px) {
 	body.post-type-archive-fotoperiodismo {
-		& .wp-block-query:where(.et-theme-archive-post-feed-query) .et-theme-archive-post-feed-items {
+		& .wp-block-query:where(.et-models-fotoperiodismo-feed-query) .et-models-fotoperiodismo-feed-items {
 			grid-template-columns: repeat(3,1fr);
 		}
 	}

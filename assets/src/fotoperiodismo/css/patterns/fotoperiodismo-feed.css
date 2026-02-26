@@ -1,0 +1,66 @@
+.et-models-fotoperiodismo-feed .et-models-fotoperiodismo-feed-item {
+		position: relative;
+}
+
+.et-models-fotoperiodismo-feed .et-models-fotoperiodismo-feed-item figure {
+	position: relative;
+	aspect-ratio: 2/3;
+	width: 100%;
+	max-width: unset;
+	
+	&::after {
+		content: "";
+		inset: 0;
+		position: absolute;
+		background: 
+			linear-gradient(
+				to bottom, 
+				transparent 60%, 
+				var(--wp--preset--color--contrast) 80%
+			),
+			var(--wp--preset--color--primary);
+		mix-blend-mode: multiply;
+		transition: background 0.3s ease;
+	}
+	
+	&:hover::after {
+		background: 
+			linear-gradient(
+				to bottom, 
+				transparent 60%, 
+				var(--wp--preset--color--contrast) 80%
+			);
+	}
+
+	& img {
+		height: 100%;
+	}
+}
+
+.et-models-fotoperiodismo-feed .et-models-fotoperiodismo-feed-item > .wp-block-group:last-child {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding: var(--wp--preset--spacing--60);
+}
+
+.et-models-fotoperiodismo-feed .et-models-fotoperiodismo-feed-item .wp-block-post-title a {
+	color: var(--wp--preset--color--base);	
+}
+
+.et-models-fotoperiodismo-feed nav {
+	padding: var(--wp--preset--spacing--60);
+	gap: var(--wp--preset--spacing--30);
+}
+
+.et-models-fotoperiodismo-feed nav .et-models-fotoperiodismo-feed-pagination-numbers {
+	width: 100%;
+  	text-align: center;
+}
+
+@media (min-width: 640px) {
+	.et-models-fotoperiodismo-feed .wp-block-query:where(.et-models-fotoperiodismo-feed-query) .wp-block-query-pagination {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}
