@@ -53,7 +53,6 @@ class Bootstrap extends AbstractBootstrap {
 			PostType::class,
 			Meta::class,
 			Blocks::class,
-			View::class,
 			Rest::class,
 			MigrationPage::class
 		];
