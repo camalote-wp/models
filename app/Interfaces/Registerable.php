@@ -1,6 +1,6 @@
 <?php
 
-namespace EnfantTerrible\Models\Interfaces;
+namespace CamaloteWP\Models\Interfaces;
 
 interface Registerable {
     public function register();

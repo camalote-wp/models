@@ -9,11 +9,11 @@
  * @link       https://github.com/tingeka
  * @since      1.0.0
  *
- * @package    EnfantTerrible/Models
- * @subpackage EnfantTerrible/Models/includes
+ * @package    CamaloteWP/Models
+ * @subpackage CamaloteWP/Models/includes
  */
 
-namespace EnfantTerrible\Models\Core;
+namespace CamaloteWP\Models\Core;
 
 /**
  * Define the internationalization functionality.
@@ -22,8 +22,8 @@ namespace EnfantTerrible\Models\Core;
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    EnfantTerrible/Models
- * @subpackage EnfantTerrible/Models/includes
+ * @package    CamaloteWP/Models
+ * @subpackage CamaloteWP/Models/includes
  * @author     Martín García <tin.geka@gmail.com>
  */
 class I18n {

@@ -22,7 +22,7 @@
  * @link       https://github.com/tingeka
  * @since      1.0.0
  *
- * @package    Et_Models
+ * @package    CamaloteWP/Models
  */
 
 // If uninstall not called from WordPress, then exit.

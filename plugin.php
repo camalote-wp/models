@@ -10,24 +10,24 @@
  *
  * @link              https://github.com/tingeka
  * @since             1.0.0
- * @package           Et_Models
+ * @package           CamaloteWP/Models
  *
  * @wordpress-plugin
- * Plugin Name:       Enfant Terrible - Models
- * Plugin URI:        https://github.com/enfantterribleAR
- * Description:       Defines Enfant Terrible content models, including post types, taxonomies, metadata, templates, and blocks.
+ * Plugin Name:       CamaloteWP - Models
+ * Plugin URI:        https://github.com/camalote-wp/models
+ * Description:       CamaloteWP defines content models, including post types, taxonomies, metadata, templates, and blocks.
  * Version:           1.0.0
  * Author:            Martín García
  * Author URI:        https://github.com/tingeka/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       et-models
+ * Text Domain:       camalote-wp-models
  * Domain Path:       /languages
  */
 
-use EnfantTerrible\Models\Core\Activator;
-use EnfantTerrible\Models\Core\Deactivator;
-use EnfantTerrible\Models\Core\Plugin;
+use CamaloteWP\Models\Core\Activator;
+use CamaloteWP\Models\Core\Deactivator;
+use CamaloteWP\Models\Core\Plugin;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -39,18 +39,9 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'ET_MODELS_VERSION', '1.0.0' );
-
-if ( ! defined( 'ET_MODELS_DIR' ) ) {
-	define( 'ET_MODELS_DIR', plugin_dir_path( __FILE__ ) );
-}
-
-if ( ! defined( 'ET_MODELS_URL' ) ) {
-	define( 'ET_MODELS_URL', plugin_dir_url( __FILE__ ) );
-}
-
-// var_dump(ET_MODELS_DIR);
-// var_dump(ET_MODELS_URL);
+define( 'CAMALOTE_WP_MODELS_VERSION', '1.0.0' );
+define( 'CAMALOTE_WP_MODELS_DIR', plugin_dir_path( __FILE__ ) );
+define( 'CAMALOTE_WP_MODELS_URL', plugin_dir_url( __FILE__ ) );
 
 /**
  * Imports the Composer autoloader if it exists.
@@ -61,30 +52,20 @@ if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class-et-models-activator.php
  */
-function activate_et_models() {
-	// require_once plugin_dir_path( __FILE__ ) . 'includes/class-et-models-activator.php';
+function activate_camalote_wp_models() {
 	Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class-et-models-deactivator.php
  */
-function deactivate_et_models() {
-	// require_once plugin_dir_path( __FILE__ ) . 'includes/class-et-models-deactivator.php';
+function deactivate_camalote_wp_models() {
 	Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_et_models' );
-register_deactivation_hook( __FILE__, 'deactivate_et_models' );
-
-/**
- * The core plugin class that is used to define internationalization,
- * admin-specific hooks, and public-facing site hooks.
- */
-// require plugin_dir_path( __FILE__ ) . 'includes/class-et-models.php';
+register_activation_hook( __FILE__, 'activate_camalote_wp_models' );
+register_deactivation_hook( __FILE__, 'deactivate_camalote_wp_models' );
 
 /**
  * Begins execution of the plugin.
@@ -95,10 +76,10 @@ register_deactivation_hook( __FILE__, 'deactivate_et_models' );
  *
  * @since    1.0.0
  */
-function run_et_models() {
+function run_camalote_wp_models() {
 
 	$plugin = new Plugin();
 	$plugin->run();
 
 }
-run_et_models();
+run_camalote_wp_models();

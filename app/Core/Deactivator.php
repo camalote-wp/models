@@ -6,11 +6,11 @@
  * @link       https://github.com/tingeka
  * @since      1.0.0
  *
- * @package    EnfantTerrible/Models
- * @subpackage EnfantTerrible/Models/includes
+ * @package    CamaloteWP/Models
+ * @subpackage CamaloteWP/Models/includes
  */
 
-namespace EnfantTerrible\Models\Core;
+namespace CamaloteWP\Models\Core;
 
 /**
  * Fired during plugin deactivation.
@@ -18,8 +18,8 @@ namespace EnfantTerrible\Models\Core;
  * This class defines all code necessary to run during the plugin's deactivation.
  *
  * @since      1.0.0
- * @package    EnfantTerrible/Models
- * @subpackage EnfantTerrible/Models/includes
+ * @package    CamaloteWP/Models
+ * @subpackage CamaloteWP/Models/includes
  * @author     Martín García <tin.geka@gmail.com>
  */
 class Deactivator {

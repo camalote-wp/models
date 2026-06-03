@@ -1,6 +1,6 @@
 {
-    "name": "enfantterrible-ar/et-models",
-    "description": "Defines Enfant Terrible content models, including post types, taxonomies, metadata, templates, and blocks.",
+    "name": "camalote-wp/models",
+    "description": "CamaloteWP Models defines content models, including post types, taxonomies, metadata, templates, and blocks.",
     "authors": [
         {
             "name": "Martín García",
@@ -10,7 +10,7 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "EnfantTerrible\\Models\\": "app/"
+            "CamaloteWP\\Models\\": "app/"
         }
     }
 }

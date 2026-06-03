@@ -1,5 +1,5 @@
 <?php
-namespace EnfantTerrible\Models\Core;
+namespace CamaloteWP\Models\Core;
 
 class AdminPageRegistrar {
 

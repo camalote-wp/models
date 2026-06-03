@@ -1,6 +1,6 @@
 <?php
 
-namespace EnfantTerrible\Models\Interfaces;
+namespace CamaloteWP\Models\Interfaces;
 
 interface AdminPage {
     public function get_page_config(): array;

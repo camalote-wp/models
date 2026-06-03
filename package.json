@@ -1,5 +1,5 @@
 {
-  "name": "et-models",
+  "name": "@camalote-wp/models",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/enfantterrible-ar/et-models.git"
+    "url": "git+https://github.com/camalote-wp/models.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/enfantterrible-ar/et-models/issues"
+    "url": "https://github.com/camalote-wp/models/issues"
   },
-  "homepage": "https://github.com/enfantterrible-ar/et-models#readme",
+  "homepage": "https://github.com/camalote-wp/models#readme",
   "devDependencies": {
     "@wordpress/scripts": "^31.4.0",
     "webpack-remove-empty-scripts": "^1.1.1"

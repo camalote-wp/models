@@ -6,11 +6,11 @@
  * @link       https://github.com/tingeka
  * @since      1.0.0
  *
- * @package    EnfantTerrible/Models
- * @subpackage EnfantTerrible/Models/includes
+ * @package    CamaloteWP/Models
+ * @subpackage CamaloteWP/Models/includes
  */
 
-namespace EnfantTerrible\Models\Core;
+namespace CamaloteWP\Models\Core;
 
 /**
  * Register all actions and filters for the plugin.
@@ -19,8 +19,8 @@ namespace EnfantTerrible\Models\Core;
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    EnfantTerrible/Models
- * @subpackage EnfantTerrible/Models/includes
+ * @package    CamaloteWP/Models
+ * @subpackage CamaloteWP/Models/includes
  * @author     Martín García <tin.geka@gmail.com>
  */
 class Loader {

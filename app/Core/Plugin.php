@@ -9,15 +9,15 @@
  * @link       https://github.com/tingeka
  * @since      1.0.0
  *
- * @package    EnfantTerrible/Models
- * @subpackage EnfantTerrible/Models/includes
+ * @package    CamaloteWP/Models
+ * @subpackage CamaloteWP/Models/includes
  */
 
-namespace EnfantTerrible\Models\Core;
-use EnfantTerrible\Models\Core\Loader;
-use EnfantTerrible\Models\Core\I18n;
-use EnfantTerrible\Models\Interfaces\Registerable;
-use EnfantTerrible\Models\Interfaces\Hookable;
+namespace CamaloteWP\Models\Core;
+use CamaloteWP\Models\Core\Loader;
+use CamaloteWP\Models\Core\I18n;
+use CamaloteWP\Models\Interfaces\Registerable;
+use CamaloteWP\Models\Interfaces\Hookable;
 
 /**
  * The core plugin class.
@@ -29,8 +29,8 @@ use EnfantTerrible\Models\Interfaces\Hookable;
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    EnfantTerrible/Models
- * @subpackage EnfantTerrible/Models/includes
+ * @package    CamaloteWP/Models
+ * @subpackage CamaloteWP/Models/includes
  * @author     Martín García <tin.geka@gmail.com>
  */
 class Plugin {
@@ -73,12 +73,12 @@ class Plugin {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-		if ( defined( 'ET_MODELS_VERSION' ) ) {
-			$this->version = ET_MODELS_VERSION;
+		if ( defined( 'CAMALOTE_WP_MODELS_VERSION' ) ) {
+			$this->version = CAMALOTE_WP_MODELS_VERSION;
 		} else {
 			$this->version = '1.0.0';
 		}
-		$this->plugin_name = 'et-models';
+		$this->plugin_name = 'camalote-wp-models';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -88,13 +88,6 @@ class Plugin {
 
 	/**
 	 * Load the required dependencies for this plugin.
-	 *
-	 * Include the following files that make up the plugin:
-	 *
-	 * - Et_Models_Loader. Orchestrates the hooks of the plugin.
-	 * - Et_Models_i18n. Defines internationalization functionality.
-	 * - Et_Models_Admin. Defines all hooks for the admin area.
-	 * - Et_Models_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -135,7 +128,7 @@ class Plugin {
 	 */
 	private function load_definitions(): void {
 		$models = [
-			\EnfantTerrible\Models\Definitions\Fotoperiodismo\Bootstrap::class,
+			// \CamaloteWP\Models\Definitions\Example\Bootstrap::class,
 		];
 
 		foreach ( $models as $class_name ) {
@@ -178,7 +171,7 @@ class Plugin {
 	}
 
 	public function enqueue_assets(): void {
-		wp_enqueue_style( 'et-models-shared-styles', ET_MODELS_URL . 'assets/build/shared/index.css' );
+		wp_enqueue_style( 'camalote-wp-models-shared-styles', CAMALOTE_WP_MODELS_URL . 'assets/build/shared/index.css' );
 	}
 
 	/**

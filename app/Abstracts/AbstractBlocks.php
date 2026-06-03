@@ -1,9 +1,9 @@
 <?php
 
-namespace EnfantTerrible\Models\Abstracts;
+namespace CamaloteWP\Models\Abstracts;
 
-use EnfantTerrible\Models\Interfaces\Registerable;
-use EnfantTerrible\Models\Interfaces\Hookable;
+use CamaloteWP\Models\Interfaces\Registerable;
+use CamaloteWP\Models\Interfaces\Hookable;
 
 abstract class AbstractBlocks implements Registerable, Hookable {
     protected string $model_name;
@@ -28,7 +28,7 @@ abstract class AbstractBlocks implements Registerable, Hookable {
     }
 
     private function get_automatic_path(): string {
-        $dir_path = ET_MODELS_DIR . 'assets/build/' . $this->model_name . '/blocks';
+        $dir_path = CAMALOTE_WP_MODELS_DIR . 'assets/build/' . $this->model_name . '/blocks';
         return $dir_path;
     }
 }
