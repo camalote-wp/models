@@ -129,6 +129,7 @@ class Plugin {
 	private function load_definitions(): void {
 		$models = [
 			// \CamaloteWP\Models\Definitions\Example\Bootstrap::class,
+			\CamaloteWP\Models\Definitions\Page\Bootstrap::class
 		];
 
 		foreach ( $models as $class_name ) {

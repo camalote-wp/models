@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "camalote-wp/nota-de-tapa",
+	"title": "CamaloteWP - Nota de tapa",
+	"category": "text",
+	"description": "Nota de tapa.",
+	"attributes": {
+		"selectedPost": {
+			"type": "object",
+			"default": null
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"align": "wide",
+	"textdomain": "camalote-wp-models",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js"
+}
