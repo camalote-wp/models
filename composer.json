@@ -1,16 +1,20 @@
 {
     "name": "camalote-wp/models",
-    "description": "CamaloteWP Models defines content models, including post types, taxonomies, metadata, templates, and blocks.",
+    "type": "library",
+    "description": "CamaloteWP Models provides abstract base classes for registering WordPress content models (post types, taxonomies, metadata, blocks).",
+    "license": "GPL-2.0-or-later",
     "authors": [
         {
             "name": "Martín García",
             "email": "tin.geka@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "php": "^8.1"
+    },
     "autoload": {
         "psr-4": {
-            "CamaloteWP\\Models\\": "app/"
+            "CamaloteWP\\Models\\": "src/"
         }
     }
 }
