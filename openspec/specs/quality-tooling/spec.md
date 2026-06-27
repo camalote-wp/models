@@ -26,7 +26,7 @@ The project SHALL define Composer scripts that run all quality tools: `test`, `s
 - **THEN** it SHALL run PHPStan, Pint, and Pest in sequence
 
 ### Requirement: GitHub Actions CI workflow
-The project SHALL include a GitHub Actions workflow that runs PHPStan, Pint, and Pest on every push and pull request using PHP 8.1.
+The project SHALL include a GitHub Actions workflow that runs PHPStan, Pint, and Pest on every push and pull request using PHP 8.2.
 
 #### Scenario: CI runs on push
 - **WHEN** a commit is pushed to any branch

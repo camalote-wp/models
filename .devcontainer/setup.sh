@@ -3,7 +3,7 @@ set -e
 
 apk add --no-cache bash git nodejs npm
 
-npm install -g openspec
+npm install -g @fission-ai/openspec
 
 if [ -f package.json ]; then
     npm install
