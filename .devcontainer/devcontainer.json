@@ -1,6 +1,6 @@
 {
   "name": "camalote-wp/models",
-  "image": "php:8.3-cli-alpine",
+  "image": "php:8.2-cli-alpine",
   "postCreateCommand": "sh .devcontainer/setup.sh",
   "customizations": {
     "vscode": {
