@@ -1,11 +1,4 @@
-## ADDED Requirements
-
-### Requirement: Consumer defines model components via AbstractBootstrap
-The library SHALL provide `AbstractBootstrap` that consumers extend to define reusable model components.
-
-#### Scenario: Model with multiple components
-- **WHEN** a consumer creates a Bootstrap extending `AbstractBootstrap` with `PostType`, `Meta`, and `Blocks` in `get_components()`
-- **THEN** the consumer can iterate components for registration
+## MODIFIED Requirements
 
 ### Requirement: AbstractPostType registers WordPress post type
 The library SHALL provide `AbstractPostType` that calls `\register_post_type()` using child-defined arguments.
@@ -28,15 +21,8 @@ The library SHALL provide `AbstractBlocks` that discovers and registers blocks f
 - **WHEN** a consumer extends `AbstractBlocks` and implements `get_block_paths()` returning their block directories
 - **THEN** `register()` auto-discovers all `block.json` files and registers them
 
-### Requirement: AbstractRest provides hooks pattern for REST extension
-The library SHALL provide `AbstractRest` that consumers extend to add REST endpoint filters/actions.
-
-#### Scenario: Extending REST response
-- **WHEN** a consumer extends `AbstractRest` and implements `get_hooks()` with REST filters
-- **THEN** their callbacks are invoked for REST operations
-
 ### Requirement: AbstractModelAdminPage provides admin page abstraction
-The library SHALL provide `AbstractModelAdminPage` that allows consumers to define admin pages with asset configuration via `get_asset_config()`.
+The library SHALL provide `AbstractModelAdminPage` that calls WordPress admin functions (`\add_submenu_page()`, `\add_menu_page()`, `\wp_enqueue_script()`, `\wp_enqueue_style()`, `\get_current_screen()`) as fully qualified global calls.
 
 #### Scenario: Admin page with assets
 - **WHEN** a consumer extends `AbstractModelAdminPage` and implements `get_asset_config()` returning asset paths and handles
