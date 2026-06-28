@@ -48,7 +48,7 @@ The GitHub Actions workflow SHALL include a `release` job that:
 
 #### Scenario: Release succeeds on feat commit
 - **WHEN** a `feat:` commit is pushed to `main` and the check job passes
-- **THEN** the release job SHALL create a new tag, CHANGELOG update, and GitHub release
+- **THEN** the release job SHALL create a new tag and GitHub release
 
 #### Scenario: Release skips on non-conventional commits
 - **WHEN** a commit without conventional prefix is pushed to `main`

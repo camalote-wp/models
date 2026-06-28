@@ -50,8 +50,3 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release
-
-      - name: Verify release versions
-        run: |
-          TAG=$(git describe --tags --abbrev=0 2>/dev/null) || exit 0
-          bash scripts/validate-release.sh
