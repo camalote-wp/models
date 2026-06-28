@@ -1,0 +1,29 @@
+# Development tooling
+.devcontainer/          export-ignore
+.github/                export-ignore
+.kilocode/              export-ignore
+
+# Release config (dev-only)
+.releaserc.json         export-ignore
+
+# Composer lock (consumers resolve their own deps)
+composer.lock           export-ignore
+
+# Node tooling
+package.json            export-ignore
+package-lock.json       export-ignore
+node_modules/           export-ignore
+
+# Tests
+tests/                  export-ignore
+
+# Dev-only tooling config
+phpunit.xml             export-ignore
+phpstan.neon            export-ignore
+captainhook.json        export-ignore
+patchwork.json          export-ignore
+
+# Meta files
+.gitattributes          export-ignore
+.gitignore              export-ignore
+.openspec/              export-ignore
