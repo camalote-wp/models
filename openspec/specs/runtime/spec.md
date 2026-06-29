@@ -1,4 +1,4 @@
-## ADDED Requirements
+## Requirements
 
 ### Requirement: Consumer defines model components via AbstractBootstrap
 The library SHALL provide `AbstractBootstrap` that consumers extend to define reusable model components.
@@ -29,7 +29,7 @@ The library SHALL provide `AbstractBlocks` that discovers and registers blocks f
 - **THEN** `register()` auto-discovers all `block.json` files and registers them
 
 ### Requirement: AbstractRest provides hooks pattern for REST extension
-The library SHALL provide `AbstractRest` that consumers extend to add REST endpoint filters/actions.
+The library SHALL provide `AbstractRest` that consumers extend to add REST endpoint filters and actions.
 
 #### Scenario: Extending REST response
 - **WHEN** a consumer extends `AbstractRest` and implements `get_hooks()` with REST filters

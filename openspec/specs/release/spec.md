@@ -1,19 +1,4 @@
-# Semantic Release
-
-Automated versioning and GitHub releases driven by conventional commits.
-
 ## Requirements
-
-### Requirement: semantic-release configuration
-The project SHALL include a `.releaserc.json` file in the `tooling/` subdir that configures semantic-release with the conventionalcommits preset. The config SHALL use exactly these plugins: `@semantic-release/commit-analyzer`, `@semantic-release/release-notes-generator`, and `@semantic-release/github`. The `package.json` containing semantic-release as a dev dependency SHALL also live in `tooling/`.
-
-#### Scenario: Config is valid
-- **WHEN** `composer check --working-dir tooling` is executed (which runs semantic-release --dry-run via tooling scripts)
-- **THEN** it SHALL parse the config without error
-
-#### Scenario: CI runs semantic-release from tooling
-- **WHEN** the release job executes in CI
-- **THEN** it SHALL run `npm ci --prefix tooling` and `npx semantic-release --prefix tooling`
 
 ### Requirement: CI triggers release on push to main
 The CI workflow SHALL include a `release` job that runs only on push to `main` (not on PRs) and executes `npx semantic-release`.
@@ -43,3 +28,25 @@ The project SHALL NOT include an explicit `"version"` field in `composer.json`. 
 #### Scenario: Dev installs resolve to `dev-main`
 - **WHEN** a developer requires the package with `dev-main`
 - **THEN** Composer SHALL resolve the version as `9999999-dev` (standard Composer behavior for branch installs)
+
+### Requirement: Dist archive excludes development files
+The `.gitattributes` file SHALL use `export-ignore` to prevent development-only files and directories from appearing in the Packagist-generated dist archive, including the entire `tooling/` subdir.
+
+#### Scenario: Packagist generates dist from tag
+- **WHEN** Packagist builds the dist archive from a tagged release
+- **THEN** the archive SHALL NOT contain `.devcontainer/`, `.github/`, `.kilocode/`, `tests/`, `node_modules/`, `src/` test fixtures, dev tooling config files, or the `tooling/` directory
+
+#### Scenario: Source repo remains complete
+- **WHEN** a developer clones the repository
+- **THEN** all files including dev tooling, tests, CI config, and `tooling/` SHALL be present in the working tree
+
+### Requirement: LICENSE file present
+A `LICENSE` file containing the full GPL-2.0-or-later text SHALL exist at the repository root.
+
+#### Scenario: Consumer inspects license
+- **WHEN** a consumer opens the library root
+- **THEN** a `LICENSE` file SHALL be present with the GPL-2.0 full text
+
+#### Scenario: Packagist dist includes LICENSE
+- **WHEN** Packagist builds the dist archive
+- **THEN** the `LICENSE` file SHALL be included in the archive
