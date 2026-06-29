@@ -26,9 +26,9 @@
         }
     },
     "scripts": {
-        "test": "pest",
+        "test": "pest --test-directory ../tests",
         "stan": "php -d memory_limit=512M vendor/bin/phpstan analyse",
-        "pint": "pint --test",
+        "pint": "pint --test ../src ../tests",
         "check": [
             "@stan",
             "@pint",
