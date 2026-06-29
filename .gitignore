@@ -1,2 +1,4 @@
 /vendor/
+/tooling/vendor/
+/tooling/composer.lock
 node_modules

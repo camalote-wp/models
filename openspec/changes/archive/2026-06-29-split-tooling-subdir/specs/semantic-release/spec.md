@@ -2,18 +2,7 @@
 
 Automated versioning and GitHub releases driven by conventional commits.
 
-## Requirements
-
-### Requirement: semantic-release configuration
-The project SHALL include a `.releaserc.json` file in the `tooling/` subdir that configures semantic-release with the conventionalcommits preset. The config SHALL use exactly these plugins: `@semantic-release/commit-analyzer`, `@semantic-release/release-notes-generator`, and `@semantic-release/github`. The `package.json` containing semantic-release as a dev dependency SHALL also live in `tooling/`.
-
-#### Scenario: Config is valid
-- **WHEN** `composer check --working-dir tooling` is executed (which runs semantic-release --dry-run via tooling scripts)
-- **THEN** it SHALL parse the config without error
-
-#### Scenario: CI runs semantic-release from tooling
-- **WHEN** the release job executes in CI
-- **THEN** it SHALL run `npm ci --prefix tooling` and `npx semantic-release --prefix tooling`
+## ADDED Requirements
 
 ### Requirement: CI triggers release on push to main
 The CI workflow SHALL include a `release` job that runs only on push to `main` (not on PRs) and executes `npx semantic-release`.
@@ -43,3 +32,17 @@ The project SHALL NOT include an explicit `"version"` field in `composer.json`. 
 #### Scenario: Dev installs resolve to `dev-main`
 - **WHEN** a developer requires the package with `dev-main`
 - **THEN** Composer SHALL resolve the version as `9999999-dev` (standard Composer behavior for branch installs)
+
+## MODIFIED Requirements
+
+### Requirement: semantic-release configuration
+~~The project SHALL include a `.releaserc.json` file at the repo root that configures semantic-release with the conventionalcommits preset. The config SHALL use exactly these plugins: `@semantic-release/commit-analyzer`, `@semantic-release/release-notes-generator`, and `@semantic-release/github`.~~
+The project SHALL include a `.releaserc.json` file in the `tooling/` subdir that configures semantic-release with the conventionalcommits preset. The config SHALL use exactly these plugins: `@semantic-release/commit-analyzer`, `@semantic-release/release-notes-generator`, and `@semantic-release/github`. The `package.json` containing semantic-release as a dev dependency SHALL also live in `tooling/`.
+
+#### Scenario: Config is valid
+- **WHEN** `composer check --working-dir tooling` is executed (which runs semantic-release --dry-run via tooling scripts)
+- **THEN** it SHALL parse the config without error
+
+#### Scenario: CI runs semantic-release from tooling
+- **WHEN** the release job executes in CI
+- **THEN** it SHALL run `npm ci --prefix tooling` and `npx semantic-release --prefix tooling`

@@ -2,7 +2,7 @@
 
 Static analysis, code style enforcement, CI workflow, and pre-commit hooks. All tooling lives in the `tooling/` subdir with its own dependency graph, isolated from the consumer-facing root `composer.json`. Daily development uses proxy scripts in root that delegate via `--working-dir tooling`.
 
-## Requirements
+## ADDED Requirements
 
 ### Requirement: Tooling subdir contains all dev dependencies
 All development tooling dependencies SHALL live in `tooling/composer.json` and `tooling/package.json`. The root `composer.json` SHALL contain only the library's runtime dependency (`php: ^8.2`) and SHALL NOT have a `require-dev` section.
