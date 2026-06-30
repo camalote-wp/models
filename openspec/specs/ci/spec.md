@@ -16,11 +16,11 @@ The project SHALL include a GitHub Actions workflow that runs PHPStan, Pint, and
 - **THEN** the workflow SHALL run `composer install --working-dir tooling` and `composer check --working-dir tooling`
 
 ### Requirement: CI release job runs on push to main
-The project SHALL include a `release` job that runs only on pushes to `main`, depends on the `check` and `lint-packaging` jobs passing, and executes `npm ci --prefix tooling` followed by `npx semantic-release --prefix tooling`.
+The project SHALL include a `release` job that runs only on pushes to `main`, depends on the `check` and `lint-packaging` jobs passing, and executes `npm ci` followed by `npx semantic-release` from the `tooling/` working directory.
 
 #### Scenario: Release job runs on push to main
 - **WHEN** a commit is pushed to `main` and the check and lint-packaging jobs pass
-- **THEN** the release job SHALL run `npm ci --prefix tooling` and `npx semantic-release --prefix tooling`
+- **THEN** the release job SHALL run `npm ci` and `npx semantic-release` from the `tooling/` working directory
 
 #### Scenario: Release job does not run on pull request
 - **WHEN** a pull request is opened or updated
