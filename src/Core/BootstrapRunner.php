@@ -9,14 +9,23 @@ class BootstrapRunner
 {
     protected Loader $loader;
 
-    public function __construct()
+    public function __construct(?Loader $loader = null)
     {
-        $this->loader = new Loader;
+        $this->loader = $loader ?? new Loader;
+    }
+
+    /**
+     * Get the loader instance used for hook registration.
+     *
+     * @return Loader The loader instance
+     */
+    public function get_loader(): Loader
+    {
+        return $this->loader;
     }
 
     /**
      * @param  array<int, string>  $bootstrap_classes
-     * @return $this
      */
     public function register(array $bootstrap_classes): self
     {

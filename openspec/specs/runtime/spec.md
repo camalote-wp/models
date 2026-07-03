@@ -42,16 +42,20 @@ The library SHALL provide `AbstractModelAdminPage` that allows consumers to defi
 - **WHEN** a consumer extends `AbstractModelAdminPage` and implements `get_asset_config()` returning asset paths and handles
 - **THEN** `enqueue_assets()` loads scripts/styles from those paths
 
+### Requirement: BootstrapRunner provides Definition registration helper
+The library SHALL provide `BootstrapRunner` that consumers instantiate and call `register()` then `run()` to instantiate Definition components and register them. The BootstrapRunner MAY accept an optional Loader instance via its constructor; if none is provided, it will create its own Loader internally.
+
+#### Scenario: Runner registers model components (default constructor)
+- **WHEN** a consumer calls `(new BootstrapRunner)->register([Page\Bootstrap::class, Event\Bootstrap::class])->run()`
+- **THEN** the runner instantiates and registers all components implementing `Registerable`
+
+#### Scenario: Runner registers model components with injected Loader
+- **WHEN** a consumer creates a Loader instance, passes it to BootstrapRunner's constructor, then calls `register()` and `run()`
+- **THEN** the runner uses the provided Loader instance for all operations
+
 ### Requirement: Loader provides hook aggregation utility
 The library SHALL provide `Loader` that collects actions and filters and applies them via `\add_action()` and `\add_filter()`.
 
 #### Scenario: Hook registration via loader
 - **WHEN** a consumer adds hooks via `Loader::add_action()` and `Loader::add_filter()`
 - **THEN** calling `run()` registers all hooks with WordPress
-
-### Requirement: BootstrapRunner provides Definition registration helper
-The library SHALL provide `BootstrapRunner` that consumers instantiate and call `register()` then `run()` to instantiate Definition components and register them.
-
-#### Scenario: Runner registers model components
-- **WHEN** a consumer calls `(new BootstrapRunner)->register([Page\Bootstrap::class, Event\Bootstrap::class])->run()`
-- **THEN** the runner instantiates and registers all components implementing `Registerable`

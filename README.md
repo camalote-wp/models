@@ -12,8 +12,17 @@ Abstract base classes for registering WordPress content models (post types, meta
 ```php
 use CamaloteWP\Models\Core\BootstrapRunner;
 
+// Standard usage (creates internal Loader)
 $runner = new BootstrapRunner;
 $runner->register([Page\Bootstrap::class])->run();
+
+// With dependency injection (shares Loader instance)
+$loader = new Loader;
+$runner = new BootstrapRunner($loader);
+$runner->register([Page\Bootstrap::class])->run();
+
+// You can also access the shared loader for additional hook registration
+$loader->add_action('plugins_loaded', $this, 'load_textdomain');
 ```
 
 ## Complete Example
@@ -172,11 +181,21 @@ $runner->register([Bootstrap::class])->run();
 
 ### BootstrapRunner
 
-Orchestrates registration. Instantiate, pass Bootstrap class names to `register()`, then call `run()`.
+Orchestrates registration. Instantiate, pass Bootstrap class names to `register()`, then call `run()`. Accepts an optional `Loader` instance for dependency injection.
 
 ```php
+// Default constructor (backward compatible)
 $runner = new BootstrapRunner;
 $runner->register([Bootstrap::class])->run();
+
+// With dependency injection
+$loader = new Loader;
+$runner = new BootstrapRunner($loader);
+$runner->register([Bootstrap::class])->run();
+
+// Access shared loader (optional)
+$loader = $runner->get_loader();
+$loader->add_action('init', $this, 'custom_init');
 ```
 
 ## Installation

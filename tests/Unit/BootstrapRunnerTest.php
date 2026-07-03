@@ -3,6 +3,7 @@
 use Brain\Monkey\Functions;
 use CamaloteWP\Models\Abstracts\AbstractBootstrap;
 use CamaloteWP\Models\Core\BootstrapRunner;
+use CamaloteWP\Models\Core\Loader;
 use CamaloteWP\Models\Interfaces\Hookable;
 use CamaloteWP\Models\Interfaces\Registerable;
 
@@ -63,4 +64,17 @@ it('adds Hookable component hooks via loader', function () {
     $runner = new BootstrapRunner;
     $runner->register([StubBootstrapWithHookable::class]);
     $runner->run();
+});
+
+it('accepts Loader via constructor', function () {
+    $loader = new Loader;
+    $runner = new BootstrapRunner($loader);
+
+    expect($runner->get_loader())->toBe($loader);
+});
+
+it('creates default Loader when none provided', function () {
+    $runner = new BootstrapRunner;
+
+    expect($runner->get_loader())->toBeInstanceOf(Loader::class);
 });
