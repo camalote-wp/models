@@ -2,6 +2,7 @@
 .devcontainer/          export-ignore
 .github/                export-ignore
 .kilocode/              export-ignore
+openspec/              export-ignore
 
 # Tooling subdir (all dev deps and config)
 tooling/                export-ignore
@@ -12,4 +13,3 @@ tests/                  export-ignore
 # Meta files
 .gitattributes          export-ignore
 .gitignore              export-ignore
-.openspec/              export-ignore
